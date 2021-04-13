@@ -126,15 +126,7 @@ void calculator_menu(void)
     //         // __fpurge(stdin);
     //         getchar();
     //         break;
-    //     case DIVIDE:
-    //         printf("\n\t%d / %d = %d\nEnter to continue", 
-    //         calculator_operand1, 
-    //         calculator_operand2,
-    //         divide(calculator_operand1, calculator_operand2));
-            
-    //         // __fpurge(stdin);
-    //         getchar();
-    //         break;
+    //     ;
     //     case SIN:
     //         printf("\n\tsin(%f) = %f\nEnter to continue", 
     //         calculator_operand, 
