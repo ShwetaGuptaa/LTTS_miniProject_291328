@@ -126,16 +126,6 @@ void calculator_menu(void)
     //         // __fpurge(stdin);
     //         getchar();
     //         break;
-    //     ;
-    //     case SIN:
-    //         printf("\n\tsin(%f) = %f\nEnter to continue", 
-    //         calculator_operand, 
-    //         sine(calculator_operand));
-    //         // printf("%f",calculator_operand);
-            
-    //         // __fpurge(stdin);
-    //         getchar();
-    //         break;
 
     //     case 6:
     //         exit(0);
