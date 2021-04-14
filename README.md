@@ -7,3 +7,5 @@
 [![Unit testing](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/actions/workflows/unit-test.yml/badge.svg)](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/actions/workflows/unit-test.yml)
 
 [![Valgrind](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/actions/workflows/Valgrind.yml/badge.svg)](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/actions/workflows/Valgrind.yml)
+
+[![Contribution Check - Git Inspector](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/actions/workflows/gitinspector.yml)
