@@ -74,7 +74,7 @@ void calculator_menu(void)
     }else  if(INVALID != valid_operation(calculator_operation) &&( calculator_operation>4 && calculator_operation<=10) ){
         printf("\n\tEnter your Number\n");
         // __fpurge(stdin);
-        scanf("%f", & calculator_operand);
+        scanf("%f", &calculator_operand);
         printf("\n\t%s(%f) = %f\n\n\nEnter to continue", 
             trignometric_symbol[calculator_operation-5],calculator_operand, 
             (trignometric_function[calculator_operation-5]) (calculator_operand));
