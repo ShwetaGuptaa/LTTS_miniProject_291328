@@ -10,18 +10,49 @@
 #include <stdlib.h>
 // #include <stdio_ext.h>
 
-// typedef struct{
-//     int operand1;
-//     int operand2;
-//     char symbol [10];
-// }arithmatic;
+// structure variable for arithmatic inputs
+typedef struct{
+    double operand1;
+    double operand2;
+    double output;
+}arithmatic;
+
+// structure variable for trignometric inputs
+typedef struct{
+    double operand;
+    double output;
+}trignometric;
+
+// structure variable for single input as type integer
+typedef struct{
+    unsigned int operand;
+    unsigned long long int output;
+}single_int_inputs;
+
+// structure variable for single input as type float
+typedef struct{
+    double operand;
+    double output;
+}single_double_inputs;
+
+
+// errors enum
+typedef enum error_t{
+    SUCCESS=1,
+    FAILURE=0,
+    UNDEFINED=-1,
+    ERROR_DIVISION_BY_ZERO=-2,
+}error_t;
+
+
+
 /**
 *  adds the operand1 and operand2 and returns the result
 * @param[in] operand1 
 * @param[in] operand2 
 * @return Result of operand1 + operand2
 */
-int add(int operand1, int operand2);
+error_t add(arithmatic* data);
 
 /**
 *  subtracts the operand1, operand2 and returns the result
@@ -29,7 +60,7 @@ int add(int operand1, int operand2);
 * @param[in] operand2 
 * @return Result of operand1 - operand2
 */
-int subtract(int operand1, int operand2);
+error_t subtract(arithmatic* data);
 
 /**
 *  multiply the operand1, operand2 and returns the result
@@ -37,7 +68,7 @@ int subtract(int operand1, int operand2);
 * @param[in] operand2 
 * @return Result of operand1 * operand2
 */
-int multiply(int operand1, int operand2);
+error_t multiply(arithmatic* data);
 
 
 /**
@@ -47,31 +78,28 @@ int multiply(int operand1, int operand2);
 * @return integer value of the operand1 / operand2
 * @note returns 0 for divide by 0 error
 */
-int divide(int operand1, int operand2);
+error_t divide(arithmatic* data);
 /**
  * @brief 
  * 
  * @param operand 
  * @return double 
  */
-float sine(float operand);
-float Cos(float operand);
-float Tan(float operand);
-float Cot(float operand);
-float Sec(float operand);
-float Cosec(float operand);
-float sin_inverse(float operand);
-float cos_inverse(float operand);
-float tan_inverse(float operand);
-float Exponent(float operand);
-float Natural_log(float operand);
-float base_10_log(float operand);
-float square_root(float operand);
-float nth_root(float operand,int root);
-float square(float operand);
-float nth_power(float operand, float power);
-float xth_power_of_10(float power);
-int factorial(int operand);
+error_t sine(trignometric* data);
+error_t Cos(trignometric* data);
+error_t Tan(trignometric* data);
+error_t Cot(trignometric* data);
+error_t Sec(trignometric* data);
+error_t Cosec(trignometric* data);
+error_t Exponent(single_double_inputs* data);
+error_t Natural_log(single_double_inputs* data);
+error_t base_10_log(single_double_inputs* data);
+error_t square_root(single_double_inputs*data);
+error_t nth_root(arithmatic* data);
+error_t square(single_double_inputs* data);
+error_t nth_power(arithmatic* data);
+error_t xth_power_of_10(single_double_inputs* data);
+error_t factorial(single_int_inputs* data);
 
 
 #endif  /* #define __CALCULATOR_OPERATIONS_H__ */

@@ -2,94 +2,153 @@
 #include<math.h>
 #include "calculator_operations.h"
 
-int add(int operand1, int operand2)
+const double PI=3.141592;
+
+error_t add(arithmatic* data)
 {
-    return operand1 + operand2;
+   data->output=data->operand1+data->operand2;
+   return SUCCESS;
 }
 
-int subtract(int operand1, int operand2)
+error_t subtract(arithmatic* data)
 {
-    return operand1 - operand2;
+   data->output=data->operand1-data->operand2;
+   return SUCCESS;
 }
 
-int multiply(int operand1, int operand2)
+error_t multiply(arithmatic* data)
 {
-    return operand1 * operand2;
+   data->output=data->operand1*data->operand2;
+   return SUCCESS;
 }
 
-int divide(int operand1, int operand2)
+error_t divide(arithmatic* data)
 {
-    if(0 == operand2)
-        return 0;
-    else
-        return operand1 / operand2;
-}
-float sine(float operand){
-    return sin(operand);
-}
-float Cos(float operand){
-    return cos(operand);
-}
-float Tan(float operand){
-
-    return tan(operand);
-}
-float Cot(float operand){
-    if(tan(operand==0))
-        return INT_MAX*1.0;
-    else
-        return 1/tan(operand);
-}
-float Sec(float operand){
-    if(cos(operand==0))
-        return INT_MAX*1.0;
-    else
-        return 1/cos(operand);
-}
-float Cosec(float operand){
-    if(sin(operand==0))
-        return INT_MAX*1.0;
-    else
-        return 1/sin(operand);
-}
-float sin_inverse(float operand){
-    return asin(operand);
-}
-float cos_inverse(float operand){
-    return acos(operand);
-}
-float tan_inverse(float operand){
-    return atan(operand);
-}
-float Exponent(float operand){
-    return exp(operand);
-}
-float Natural_log(float operand){
-    return log(operand);
-}
-float base_10_log(float operand){
-    return log10(operand);
-}
-
-float square_root(float operand){
-    return sqrt(operand);
-}
-float nth_root(float operand,int root){
-    return pow(operand,(1/((1.0* root)))) ;
-}
-float square(float operand){
-    return pow(operand,2);
-}
-float nth_power(float operand, float power){
-    return pow(operand,power);
-}
-float xth_power_of_10(float power){
-    return pow(10,power);
-}
-int factorial(int operand){
-    if(operand==0){
-        return 1;
-    }else{
-        return operand*factorial(operand-1);
+    if(0 == data->operand2){
+        data->output=0;
+        return ERROR_DIVISION_BY_ZERO;  
     }
+    else{
+        data->output=data->operand1/data->operand2;
+        return SUCCESS;
+        }
+}
+error_t sine(trignometric* data){
+    
+    data->output=sin(data->operand*(PI/180));
+    return SUCCESS; 
+}
+error_t Cos(trignometric* data){
+    data->output=cos(data->operand*(PI/180));
+    return SUCCESS;
+}
+error_t Tan(trignometric* data){
+    if(((int)(data->operand)/90)%2==1){
+        data->output=INT_MAX*1.0;
+        return UNDEFINED;  
+    }else{
+    data->output=tan(data->operand*(PI/180));
+    return SUCCESS;
+    }
+
+}
+error_t Cot(trignometric* data){
+    if(tan(data->operand*(PI/180))==0){
+        data->output=INT_MAX*1.0;
+        return UNDEFINED;
+    }     
+    else if(((int)(data->operand)/90)%2==1){
+        data->output=0;
+        return SUCCESS;  
+    }else{
+    data->output=1/(tan(data->operand*(PI/180)));
+    return SUCCESS;
+    }
+}
+error_t Sec(trignometric* data){
+    if(cos(data->operand*(PI/180))==0){
+        data->output=INT_MAX*1.0;        
+        return UNDEFINED;
+    }   
+    else{
+    data->output=1/(cos(data->operand*(PI/180)));
+    return SUCCESS;
+    }
+}
+error_t Cosec(trignometric* data){
+    if(sin(data->operand*(PI/180))==0){
+        data->output=INT_MAX*1.0;
+        return UNDEFINED;
+    }
+    else{
+    data->output=1/(sin(data->operand*(PI/180)));
+    return SUCCESS;
+    }
+}
+error_t Exponent(single_double_inputs* data){
+    data->output=exp(data->operand);
+    return SUCCESS;
+}
+error_t Natural_log(single_double_inputs* data){
+    if(data->operand<0){
+        data->output=0;
+        return UNDEFINED;
+    }else{
+        data->output=log(data->operand);
+        return SUCCESS;
+    }
+    
+}
+error_t base_10_log(single_double_inputs* data){
+        if(data->operand<0){
+        data->output=0;
+        return UNDEFINED;
+    }else{
+    data->output=log10(data->operand);
+    return SUCCESS;
+    }
+}
+
+error_t square_root(single_double_inputs* data){
+    if(data->operand<0){
+        data->output=0;
+        return UNDEFINED;
+    }else{
+        data->output=sqrt(data->operand);
+        return SUCCESS;  
+    }
+
+}
+error_t nth_root(arithmatic* data){
+    if((int)(data->operand2)%2==0){
+        data->output=0;
+        return UNDEFINED;
+    }
+    data->output=pow(data->operand1,(1/data->operand2)) ;
+    return SUCCESS;
+}
+error_t square(single_double_inputs* data){
+    data->output=pow(data->operand,2);
+    return SUCCESS;
+}
+error_t nth_power(arithmatic* data){
+    data->output=pow(data->operand1,data->operand2);
+    return SUCCESS;
+}
+error_t xth_power_of_10(single_double_inputs* data){
+    data->output=pow(10,data->operand);
+    return SUCCESS;
+}
+error_t factorial(single_int_inputs* data){
+    if(data->operand<0){
+        data->output=0;
+        return FAILURE;
+    }else{
+    data->output=1;
+    unsigned int temp_var=data->operand;
+    while(temp_var>0){
+        data->output=data->output*temp_var;
+        temp_var--;
+    }
+    return SUCCESS;}
 }

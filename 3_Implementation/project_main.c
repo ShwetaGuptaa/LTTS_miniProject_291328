@@ -9,15 +9,15 @@
 unsigned int calculator_operation = 0;
 
 /* Operands on which calculation is performed */
-int calculator_operand1 = 0;
-int calculator_operand2 = 0;
-float calculator_operand=0;
+arithmatic arithmatic_operands={0,0};
+trignometric trignometric_operands={0};
+single_double_inputs double_opearnd={0};
+single_int_inputs int_operand={0};
 
 /* Valid operations */
-enum operations{ ADD=1, SUBTRACT, MULTIPLY, DIVIDE,SIN,COS,TAN, COSEC, SEC,COT,EXP, NATURAL_LOG, BASE_10_LOG ,SQUARE_ROOT, SQUARE,  xth_POWER_of_10, EXIT };
+enum operations{ ADD=1, SUBTRACT, MULTIPLY, DIVIDE,SIN,COS,TAN, COSEC, SEC,COT,EXP, NATURAL_LOG, BASE_10_LOG ,SQUARE_ROOT, SQUARE,  xth_POWER_of_10,Nth_ROOt, NTH_POWER,FACTORIAL, EXIT };
 
-int (*arithmatic_function[4])(int,int)={add,subtract,multiply,divide};
-// arithmatic_function={add,subtract,multiply,divide};
+error_t (*arithmatic_function[4])(arithmatic*)={add,subtract,multiply,divide};
 char arithmatic_symbol[4][3]={"+","-","*","/"};
 
 /* Display the menu of operations supported */
@@ -26,19 +26,19 @@ void calculator_menu(void);
 int valid_operation(int operation);
 
 
-float (*trignometric_function[6])(float)={sine,Cos,Tan,Cosec,Sec,Cot};
-// trignometric_function={sine,Cos,Tan,Cosec,Sec,Cot};
-char trignometric_symbol[6][10]={"sin","cos","tan","cosec","sec","cot"};
+error_t (*trignometric_function[6])(trignometric*)={sine,Cos,Tan,Cosec,Sec,Cot};
+char trignometric_symbol[6][8]={"sin","cos","tan","cosec","sec","cot"};
 
-float (*other_functions[6])(float)={Exponent, Natural_log, base_10_log ,square_root, square,  xth_power_of_10};
-// trignometric_function={sine,Cos,Tan,Cosec,Sec,Cot};
-char other_function_symbol[6][12]={"e^","ln","log10","square root","square","10^"};
+error_t (*other_mathemaical_functions[6])(single_double_inputs*)={Exponent, Natural_log, base_10_log ,square_root, square, xth_power_of_10};
+char other_mathemaical_function_symbol[6][12]={"e^","ln","log10","square root","square","10^"};
+
+
 
 /* Start of the application */
 int main(int argc, char *argv[])
 {
     
-    printf("\n****Calculator****\n");
+    printf("\n\t\t\t\t****Calculator****\n");
     while(1)
     {
         calculator_menu();
@@ -47,10 +47,13 @@ int main(int argc, char *argv[])
 
 void calculator_menu(void)
 {
-    printf("\nAvailable Operations\n");
-    printf("\n1. Add\t5. sin()\t8. cosec()\n2. Subtract\t6. cos()\t9. sec()\n3. Multiply\t7. tan()\t10. cot()\n4. Divide");
-    printf("\n11. exp()\t12. ln()\n13. log10()\t14. square root()\n15. square\t16. 10^x\n17. Exit");
-    printf("\n\tEnter your choice\n");
+    printf("\n\t\tAvailable Operations\n");
+    printf("\n 1. Add\t\t2. Subtract\t3. Multiply\t4. Divide");
+    printf("\n 5. sin()\t6. cos()\t7. tan()");
+    printf("\n 8. cosec()\t9. sec()\t10. cot()");
+    printf("\n11. exp()\t12. ln()\t13. log10()\n14. Square root 15. Square\t16. 10^x");
+    printf("\n17. nth root\t18. nth power\t19. Factorial\n20. Exit");
+    printf("\n\n\t\t\t\tEnter your choice\n");
    
     //  __fpurge(stdin);
     scanf("%d", &calculator_operation);
@@ -66,28 +69,54 @@ void calculator_menu(void)
     {
         printf("\n\tEnter your Numbers with space between them\n");
         // __fpurge(stdin);
-        scanf("%d %d", &calculator_operand1, &calculator_operand2);
-        printf("\n\t%d %s %d = %d\n\n\nEnter to continue", 
-            calculator_operand1,arithmatic_symbol[calculator_operation-1], calculator_operand2,
-            (arithmatic_function[calculator_operation-1]) (calculator_operand1, calculator_operand2));
+        scanf("%lf %lf", &arithmatic_operands.operand1, &arithmatic_operands.operand2);
+        (arithmatic_function[calculator_operation-1]) (&arithmatic_operands);
+        printf("\n\t%.2lf %s %.2lf = %.2lf\n\n\n", 
+            arithmatic_operands.operand1,arithmatic_symbol[calculator_operation-1],
+            arithmatic_operands.operand2,arithmatic_operands.output);
 
-    }else  if(INVALID != valid_operation(calculator_operation) &&( calculator_operation>4 && calculator_operation<=10) ){
-        printf("\n\tEnter your Number\n");
+    }else if(INVALID != valid_operation(calculator_operation) &&( calculator_operation>4 && calculator_operation<=10) ){
+        printf("\n\tEnter your Number \n");
         // __fpurge(stdin);
-        scanf("%f", &calculator_operand);
-        printf("\n\t%s(%f) = %f\n\n\nEnter to continue", 
-            trignometric_symbol[calculator_operation-5],calculator_operand, 
-            (trignometric_function[calculator_operation-5]) (calculator_operand));
-
+        scanf("%lf", &trignometric_operands.operand);
+        (trignometric_function[calculator_operation-5]) (&trignometric_operands);
+        printf("\n\t%s(%.2lf) = %.2lf\n\n\n", 
+            trignometric_symbol[calculator_operation-5],
+            trignometric_operands.operand,trignometric_operands.output);
     }
-    else  if(INVALID != valid_operation(calculator_operation) && calculator_operation>10)
+    else  if(INVALID != valid_operation(calculator_operation) && (calculator_operation>10 && calculator_operation<=16 ))
     {
         printf("\n\tEnter your Number\n");
         // __fpurge(stdin);
-        scanf("%f", &calculator_operand);
-        printf("\n\t%s(%f) = %f\n\n\nEnter to continue", 
-            other_function_symbol[calculator_operation-11],calculator_operand, 
-            (other_functions[calculator_operation-11]) (calculator_operand));
+        scanf("%lf", &double_opearnd.operand);
+        (other_mathemaical_functions[calculator_operation-11]) (&double_opearnd);
+        printf("\n\t%s(%.2lf) = %.2lf\n\n\n", 
+            other_mathemaical_function_symbol[calculator_operation-11],
+            double_opearnd.operand,double_opearnd.output);
+    }else if(INVALID != valid_operation(calculator_operation) && calculator_operation==Nth_ROOt){
+
+            printf("\n\tEnter your Number and then root with space between them \n");
+            scanf("%lf %lf", &arithmatic_operands.operand1, &arithmatic_operands.operand2);
+            nth_root(&arithmatic_operands);
+            printf("\n\t%dth root of %.2lf = %.2lf\n\n\n", 
+            (int)(arithmatic_operands.operand2),arithmatic_operands.operand1,
+            arithmatic_operands.output);
+
+    }else if(INVALID != valid_operation(calculator_operation) && calculator_operation==NTH_POWER){
+            printf("\n\tEnter your Number and then power  with space between them  \n");
+            scanf("%lf %lf", &arithmatic_operands.operand1, &arithmatic_operands.operand2);
+            nth_power(&arithmatic_operands);
+            printf("\n\t%.2lf^%.2lf = %.2lf\n\n\n", 
+            arithmatic_operands.operand1,arithmatic_operands.operand2,
+            arithmatic_operands.output);
+
+    }else if(INVALID != valid_operation(calculator_operation) && calculator_operation==FACTORIAL){
+        printf("\n\tEnter your Number for factorial\n");
+        // __fpurge(stdin);
+        scanf("%d", &int_operand.operand);
+        factorial(&int_operand);
+        printf("\n\t%d! = %lld\n\n\n", 
+            int_operand.operand,int_operand.output );
     }
     else
     {
