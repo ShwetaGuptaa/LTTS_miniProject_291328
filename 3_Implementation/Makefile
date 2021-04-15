@@ -47,6 +47,11 @@ coverage:${PROJECT_NAME}
 	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 	gcov -a $(SRC)
 
+cppcheck: $(SRC)
+	cppcheck --enable=all  $(SRC)
+valgrind:
+	valgrind $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+
 doc:
 	make -C doc
 $(BUILD_DIR):
