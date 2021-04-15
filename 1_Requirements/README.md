@@ -35,7 +35,10 @@
 *   '16'-square
 *   '17'-nth power of a function
 *   '18'-xth power of 10
-*   '19'-factorial of a number  
+*   '19'-factorial of a number 
+
+## SWOT ANALYSIS
+![SWOT Analysis](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/blob/main/1_Requirements/SWOT%20Analysis.PNG)
 
 # 4W&#39;s and 1&#39;H
 ## Who
