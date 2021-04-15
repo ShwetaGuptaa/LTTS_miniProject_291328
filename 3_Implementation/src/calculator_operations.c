@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include<math.h>
 #include "calculator_operations.h"
-
+#define INT_MAX __INT_MAX__
 const double PI=3.141592;
 
 error_t add(arithmatic* data)
