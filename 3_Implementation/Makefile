@@ -9,8 +9,7 @@ SRC = project_main.c\
 src/calculator_operations.c
 
 # All test source files
-TEST_SRC = src/calculator_operations.c\
-test/test_calculator_operations.c\
+TEST_SRC = test/test_calculator_operations.c\
 unity/unity.c\
 
 INC = -Iinc\
@@ -30,7 +29,7 @@ else
 endif
 
 # Makefile will not run target command if the name with file already exists. To override, use .PHONY
-.PHONY : all test coverage run clean doc
+.PHONY : all run test coverage cppcheck valgrind clean
 
 all:$(BUILD_DIR)
 	gcc  $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
