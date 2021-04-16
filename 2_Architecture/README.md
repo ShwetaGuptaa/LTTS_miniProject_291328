@@ -1,8 +1,9 @@
 # Architecture
 
-* Add UML Diagrams
-* For information about UML Diagrams refer: [UML Diagrams](https://www.uml-diagrams.org/uml-25-diagrams.html)
-## Tools 
-* [Draw.io](https://app.diagrams.net/)
-* [Creately](https://app.creately.com/diagram/create)
-* or any other free tools
+## Structure Diagrams
+
+### Class diagram
+![Structural](https://github.com/ShwetaGuptaa/LTTS_miniProject_291328/blob/main/2_Architecture/structure%20Diagrams/class%20Diagram.png)
+
+
+
