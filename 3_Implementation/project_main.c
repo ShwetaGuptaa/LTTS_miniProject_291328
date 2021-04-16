@@ -117,6 +117,7 @@ void calculator_menu(void)
         factorial(&int_operand);
         printf("\n\t%d! = %lld\n\n\n", 
             int_operand.operand,int_operand.output );
+        
     }
     else
     {
@@ -126,42 +127,7 @@ void calculator_menu(void)
         return;
         
     }
-    // switch(calculator_operation)
-    // {
-    //     case ADD:
-    //         printf("\n\t%d + %d = %d\nEnter to continue", 
-    //         calculator_operand1, 
-    //         calculator_operand2,
-    //         add(calculator_operand1, calculator_operand2));
-            
-    //         // __fpurge(stdin);
-    //         getchar();
-    //         break;
-    //     case SUBTRACT:
-    //         printf("\n\t%d - %d = %d\nEnter to continue", 
-    //         calculator_operand1, 
-    //         calculator_operand2,
-    //         subtract(calculator_operand1, calculator_operand2));
-            
-    //         // __fpurge(stdin);
-    //         getchar();
-    //         break;
-    //     case MULTIPLY:
-    //         printf("\n\t%d * %d = %d\nEnter to continue", 
-    //         calculator_operand1, 
-    //         calculator_operand2,
-    //         multiply(calculator_operand1, calculator_operand2));
-            
-    //         // __fpurge(stdin);
-    //         getchar();
-    //         break;
 
-    //     case 6:
-    //         exit(0);
-    //         break;
-    //     default:
-    //         printf("\n\t---It should never come here---\n");
-    // }
 }
 
 int valid_operation(int operation)

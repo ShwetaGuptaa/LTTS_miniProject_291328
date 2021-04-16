@@ -67,9 +67,9 @@ error_t Cot(trignometric* data){
 }
 error_t Sec(trignometric* data){
     if(cos(data->operand*(PI/180))==0){
-        data->output=INT_MAX*1.0;        
+        data->output=INT_MAX*1.0;
         return UNDEFINED;
-    }   
+    }
     else{
     data->output=1/(cos(data->operand*(PI/180)));
     return SUCCESS;
@@ -120,7 +120,7 @@ error_t square_root(single_double_inputs* data){
 
 }
 error_t nth_root(arithmatic* data){
-    if((int)(data->operand2)%2==0){
+    if((int)(data->operand2)%2==0 && data->operand1<0){
         data->output=0;
         return UNDEFINED;
     }
@@ -128,7 +128,7 @@ error_t nth_root(arithmatic* data){
     return SUCCESS;
 }
 error_t square(single_double_inputs* data){
-    data->output=pow(data->operand,2);
+    data->output=pow(data->operand,2.0);
     return SUCCESS;
 }
 error_t nth_power(arithmatic* data){
@@ -142,7 +142,7 @@ error_t xth_power_of_10(single_double_inputs* data){
 error_t factorial(single_int_inputs* data){
     if(data->operand<0){
         data->output=0;
-        return FAILURE;
+        return UNDEFINED;
     }else{
     data->output=1;
     unsigned int temp_var=data->operand;
@@ -150,5 +150,6 @@ error_t factorial(single_int_inputs* data){
         data->output=data->output*temp_var;
         temp_var--;
     }
-    return SUCCESS;}
+    return SUCCESS;
+    }
 }

@@ -86,19 +86,103 @@ error_t divide(arithmatic* data);
  * @return double 
  */
 error_t sine(trignometric* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t Cos(trignometric* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t Tan(trignometric* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t Cot(trignometric* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t Sec(trignometric* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t Cosec(trignometric* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t Exponent(single_double_inputs* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t Natural_log(single_double_inputs* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t base_10_log(single_double_inputs* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t square_root(single_double_inputs*data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t nth_root(arithmatic* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t square(single_double_inputs* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t nth_power(arithmatic* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t xth_power_of_10(single_double_inputs* data);
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return error_t 
+ */
 error_t factorial(single_int_inputs* data);
 
 
