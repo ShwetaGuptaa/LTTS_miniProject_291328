@@ -171,14 +171,14 @@ error_t square(single_double_inputs* data);
  */
 error_t nth_power(arithmatic* data);
 /**
- * @brief 
+ * @brief function to calculate xth power of 10
  * 
  * @param data 
  * @return error_t 
  */
 error_t xth_power_of_10(single_double_inputs* data);
 /**
- * @brief 
+ * @brief function to calculate factorial of number
  * 
  * @param data 
  * @return error_t 
