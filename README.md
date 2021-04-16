@@ -16,3 +16,10 @@ Folder             | Description
 `2_Design`         | Documents specifying design details
 `3_Implementation` | All code and documentation
 `4_Test_plan`      | Documents with test plans and procedures
+
+
+## Contributors List and Summary
+
+|SFID No. |  Name   |    Features    |No Test Cases|Test Case Pass|
+-------|---------|----------------|-------------|--------------|
+|291328 | Shweta Gupta | Arithmatic Operations, Trignometric Operations, other mathmatical operations   |19 |19  |  
